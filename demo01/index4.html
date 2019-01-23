@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <style>
+    #cloak {
+            background-color: red;
+            /* display: none; */
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>原始文本信息:{{msg}}</p>
+        <h3>文本框</h3>
+        <p>v-model:<input type="text" v-model="msg"></p>
+        <h3>多选按钮绑定一个值</h3>
+        <input type="checkbox" id="isTrue" v-model="isTrue">
+        <label for='isTrue'>{{isTrue}}</label>
+        <h3>多选绑定一个数组</h3>
+       <p>
+            <input type="checkbox" id="JSPang" value="JSPang" v-model="web_Names">
+            <label for="JSPang">JSPang</label><br/>
+            <input type="checkbox" id="Panda" value="Panda" v-model="web_Names">
+            <label for="JSPang">Panda</label><br/>
+            <input type="checkbox" id="PanPan" value="PanPan" v-model="web_Names">
+            <label for="JSPang">PanPan</label>
+            <p>{{web_Names}}</p>
+       </p>
+       <h3>单选按钮绑定</h3>
+        <input type="radio" id="one" value="男" v-model="sex">
+        <label for="one">男</label>
+        <input type="radio" id="two" value="女" v-model="sex">
+        <label for="one">女</label>
+        <p>{{sex}}</p>
+        <hr>
+        <img v-bind:src="imgSrc"  width="200px">
+        <div v-pre>{{msg}}</div>
+        <div v-once>第一次绑定的值：{{msg}}</div>
+        <div><input type="text" v-model="msg"></div>
+        <div id='cloak' v-cloak>
+               v-cloak {{ msg }}
+              </div>
+    </div>
+    <script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:"hello vue",
+            isTrue:true,
+            web_Names:[],
+            sex:'男',
+            imgSrc:'http://baidu.com/wp-content/uploads/2017/02/vue01-2.jpg'
+        }
+    })
+    </script>
+</body>
+</html>
