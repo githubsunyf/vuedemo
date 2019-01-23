@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+                <div v-jspang="color" id="demo">
+                    {{num}}
+                </div>
+                <div>
+                    <button @click="add">Add</button>
+                </div>
+        </div>
+        
+        <button onclick="unbindApp()">解绑</button>
+        <script>
+             function unbindApp() {
+                app.$destroy();
+            }
+            Vue.directive('jspang',{                  
+                bind:function(el, binding, vnode){//被绑定
+                    el.style='color:'+binding.value;
+                    console.log("1-bind 被绑定");
+                    console.log("el:",el);
+                    console.log("binding:",binding);
+                    console.log("vnode:",vnode);
+                    console.log('1 - bind');
+                },
+                inserted:function(el, binding, vnode){//绑定到节点
+                    console.log('2 - inserted');
+                },
+                update:function(el, binding, vnode){//组件更新
+                    console.log('3 - update');
+                },
+                componentUpdated:function(el, binding, vnode){//组件更新完成
+                    console.log('4 - componentUpdated');
+                },
+                unbind:function(el, binding, vnode){//解绑
+                    console.log('5 - bind');
+                }
+            });
+            var app=new Vue({
+            el:'#app',
+            data:{
+                num:10,
+                color:'red'
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            }
+        })
+        </script>
+</body>
+</html>
