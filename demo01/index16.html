@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <h1>component-3</h1>
+        <hr>
+        <div id="app">
+          <jspang></jspang>  
+        </div>
+
+        <script type="text/javascript">
+            var city = {
+                template:`
+                    <div>sichuan of China</div>
+                `
+            }
+            var jspang = {
+                template:`
+                    <div>
+                    <p> Panda from China!</p>
+                    <city></city>    
+                    </div>
+                `,
+                components:{
+                    "city":city
+                }
+            }
+            var app = new Vue({
+                el:'#app',
+                components:{
+                    "jspang":jspang
+                }
+            })
+        </script>
+</body>
+</html>
