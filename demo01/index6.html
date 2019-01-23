@@ -4,9 +4,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vue.js"></script>
-    <title>Document</title>
+    <title>vue.extend-扩展实例构造器</title>
 </head>
 <body>
-    
+    <div id="author"></div>
+    <script type="text/javascript">
+        var authorExtend = Vue.extend({
+            template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+            data:function(){
+                return{
+                    authorUrl:'http://www.jspang.com',
+                    authorName:'jspang'
+                }
+            }
+        });   
+        new authorExtend().$mount('#author'); 
+    </script>
 </body>
 </html>

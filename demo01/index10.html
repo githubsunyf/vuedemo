@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>写在template标签里的模板</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <template id="demo1">
+            <h2>标签模版</h2>
+        </template>
+        <script>
+            var app =new Vue({
+                el:'#app',
+                data:{
+                    msg:'hello',
+                },
+                template:'#demo1'
+            })
+        </script>
+
+    
+</body>
+</html>
