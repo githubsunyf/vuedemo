@@ -9,13 +9,27 @@
 <body>
     <div id="app">
         <p>{{msg}}</p>
-        <!-- <input v-model="msg"></input> -->
+        <input v-model="msg"></input>
+        <ul>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ul>
+        <p><button v-on:click="reverseMsg">Reverse</button></p>
     </div>
     <script type="text/javascript">
         var vm = new Vue({
             el:'#app',
             data:{
-                msg:'hello vue.js!'
+                msg:'hello vue.js!',
+                todos:[
+                    {text:'learn js'},
+                    {text:'learn vue'},
+                    {text:'learn other'}
+                ]
+            },
+            methods:{
+                reverseMsg:function(){
+                    this.msg = this.msg.split('').reverse().join('');
+                }
             }
         })
     </script>
