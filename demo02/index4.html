@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="vue.js"></script>
+    <title>methods Option</title>
+</head>
+<body>
+    <h1>methods Option</h1>
+    <hr>
+    <div id="app">
+        {{ a }}
+        <p><button @click="add()">add</button></p>
+        <p><button @click="add(2)">add(2)</button></p>
+        <p><button @click="addEvent(2,$event)">add(2,$event)</button></p>
+        <p><button @click="reduce">reduce</button></p>
+        <p><btn @click.native="add(3)"></btn></p>
+        <p><button onclick="app.add(4)" >外部调用构造器里的方法</button></p>
+    </div>
+    <script type="text/javascript">
+    var btn={
+            template:`<button>组件Add</button>`     
+        }
+        var app = new Vue({
+            el:"#app",
+            data:{
+                a:1
+            },
+            methods:{
+                add:function(num){
+                    if(!!num){
+                        console.log(num);
+                        this.a += num;
+                    }else{
+                        this.a++;
+                    }
+                   
+                },
+                addEvent:function(num,event){
+                    console.log(event);
+                },
+                reduce:function(){
+                    this.a--;
+                }
+            },
+            components:{
+                "btn":btn
+            }
+        });
+        
+        app.$watch('a',function(newVal,oldVal){
+           if(newVal>10){
+                app.a = 0;
+                console.log("a top");
+           };
+        });
+    </script>
+</body>
+</html>

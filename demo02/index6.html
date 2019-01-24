@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="vue.js"></script>
+    <title>methods Option</title>
+</head>
+<body>
+    <h1>methods Option</h1>
+    <hr>
+    <div id="app">
+        {{ a }}
+        <p><button @click="add(1)">add</button></p>
+    </div>
+    <script type="text/javascript">
+        var addLog = {
+            updated:function(){
+                console.log("数据发生变化，变化成 "+this.a+".")
+            },
+            add:function(){
+                console.log("这是混入中的add");
+            }
+        }
+        Vue.mixin({
+            updated:function(){
+                console.log('我是全局被混入的');
+            }
+        })
+        var app = new Vue({
+            el:"#app",
+            data:{
+                a:1
+            },
+            methods:{
+                add:function(num){
+                    if(!!num){
+                        console.log(num);
+                        this.a += num;
+                    }else{
+                        this.a++;
+                    }
+                   
+                }
+            },
+            updated:function(){
+                    console.log("构造器里的updated方法。")
+            },
+            mixins:[addLog]//混入
+
+        });
+        
+
+    </script>
+</body>
+</html>
