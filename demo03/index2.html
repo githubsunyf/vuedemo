@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <p><button onclick="useAdd()">调用add</button></p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                msg:'hello Vue!'
+            },
+            methods:{
+                add:function(){
+                    console.log("调用了add方法")
+                }
+            }
+        });
+        function useAdd(){
+            app.add();
+        }
+    </script>
+</body>
+</html>

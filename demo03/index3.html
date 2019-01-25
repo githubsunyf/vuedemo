@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Examples Method Demo</h1>
+    <hr>
+    <div id="app">
+
+    </div>
+    <script type="text/javascript">
+        var jspang = Vue.extend({
+            template:`
+                <p>{{msg}}</p>
+            `,
+            data:function(){
+              return {
+                  msg:'Hello ,I am JSPang'
+              }
+          }
+        })
+        var app = new Vue({
+            el:'#app'
+        });
+        var vm  = new jspang().$mount("#app");
+    </script>
+</body>
+</html>

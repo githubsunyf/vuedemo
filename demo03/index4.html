@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>vue.extend-扩展实例构造器</title>
+</head>
+<body>
+    <div id="author">
+
+    </div>
+    <div id="app">
+        <p>{{msg}}</p>
+        <div id="mybox"></div>
+    </div>
+    <script type="text/javascript">
+        var authorExtend = Vue.extend({
+            template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+            data:function(){
+                return{
+                    authorUrl:'http://www.jspang.com',
+                    authorName:'jspang'
+                }
+            }
+        }); 
+        var syfExtend = Vue.extend({
+            template:"<p>{{myMsg}}</p>",
+            data:function(){
+                return{
+                    myMsg:"this is myBox"
+                }
+            }
+        }); 
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                msg:'hello Vue!',
+                myMsg:'this is not right'
+            }
+        })  
+        new authorExtend().$mount('#author'); 
+        new syfExtend().$mount('#mybox');
+    </script>
+</body>
+</html>
